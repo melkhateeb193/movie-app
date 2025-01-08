@@ -19,9 +19,9 @@ export default function TvDetails({ params }) {
 
   useEffect(() => {
     if (params?.idTv) {
-      setIdTv(params.idTv); 
+      setIdTv(params.idTv);
     }
-  }, [params]); 
+  }, [params]);
 
   useEffect(() => {
     if (!idTv) return;
@@ -40,7 +40,7 @@ export default function TvDetails({ params }) {
     };
 
     fetchMovieDetails();
-  }, [idTv]); // Fetch details whenever idTv changes
+  }, [idTv]); 
 
   if (!movieDetails) {
     return <p>Loading...</p>;
@@ -70,8 +70,12 @@ export default function TvDetails({ params }) {
           Movie Name: {movieDetails.title || movieDetails.name}
         </h1>
         <p className="text-white mt-2">Description: {movieDetails.overview}</p>
-        <p className="text-white mt-2">Release Date: {movieDetails.release_date}</p>
-        <p className="text-white mt-2">Vote Average: {movieDetails.vote_average}</p>
+        <p className="text-white mt-2">
+          Release Date: {movieDetails.release_date}
+        </p>
+        <p className="text-white mt-2">
+          Vote Average: {movieDetails.vote_average}
+        </p>
         <p className="text-white mt-2">
           Genres: {movieDetails.genres.map((genre) => genre.name).join(", ")}
         </p>

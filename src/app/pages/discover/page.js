@@ -32,66 +32,68 @@ export default function Discover() {
 
   return (
     <div className="h-full">
-<div className="relative h-fit mb-6 bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg shadow-lg p-6">
-  <p className="text-white font-bold text-2xl mb-4 text-center">Discover Movies</p>
+      <div className="relative h-fit mb-6 bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg shadow-lg p-6">
+        <p className="text-white font-bold text-2xl mb-4 text-center">
+          Discover Movies
+        </p>
 
-  <div className="relative">
-    {/* Left Navigation Button */}
-    <button
-      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
-      onClick={handlePrev}
-    >
-      &#8592;
-    </button>
-
-    {/* Right Navigation Button */}
-    <button
-      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
-      onClick={handleNext}
-    >
-      &#8594;
-    </button>
-
-    {/* Movies List */}
-    <ul className="flex gap-4 overflow-hidden mt-5">
-  {visibleMovies.map((movie) => (
-    <li 
-      key={movie.id} 
-      className="relative flex-shrink-0 w-[45%] sm:w-[30%] md:w-[25%] lg:w-[20%]"
-    >
-      <Link href={`MovieDetails/${movie.id}`}>
         <div className="relative">
-          <Image
-            className="rounded-md w-full h-auto transition-transform duration-300 hover:scale-105"
-            src={movie.image}
-            alt={movie.title}
-            width={400}
-            height={600}
-          />
-          <div className="absolute bottom-2 left-2 right-2 bg-black bg-opacity-50 rounded-md p-2">
-            <div>
-              <p className="text-gray-50 text-sm sm:text-base font-semibold truncate">
-                {movie.title}
-              </p>
-              <p className="text-gray-400 text-xs sm:text-sm md:text-base">
-                {movie.year}
-              </p>
-            </div>
-            <FavoriteIcon className="text-gray-50 text-sm sm:text-base md:text-lg" />
-          </div>
+          {/* Left Navigation Button */}
+          <button
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
+            onClick={handlePrev}
+          >
+            &#8592;
+          </button>
+
+          {/* Right Navigation Button */}
+          <button
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
+            onClick={handleNext}
+          >
+            &#8594;
+          </button>
+
+          {/* Movies List */}
+          <ul className="flex gap-4 overflow-hidden mt-5">
+            {visibleMovies.map((movie) => (
+              <li
+                key={movie.id}
+                className="relative flex-shrink-0 w-[45%] sm:w-[30%] md:w-[25%] lg:w-[20%]"
+              >
+                <Link href={`MovieDetails/${movie.id}`}>
+                  <div className="relative">
+                    <Image
+                      className="rounded-md w-full h-auto transition-transform duration-300 hover:scale-105"
+                      src={movie.image}
+                      alt={movie.title}
+                      width={400}
+                      height={600}
+                    />
+                    <div className="absolute bottom-2 left-2 right-2 bg-black bg-opacity-50 rounded-md p-2">
+                      <div>
+                        <p className="text-gray-50 text-sm sm:text-base font-semibold truncate">
+                          {movie.title}
+                        </p>
+                        <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                          {movie.year}
+                        </p>
+                      </div>
+                      <FavoriteIcon className="text-gray-50 text-sm sm:text-base md:text-lg" />
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </Link>
-    </li>
-  ))}
-</ul>
+      </div>
 
-  </div>
-</div>
-
-
-
-<AllMovies moviesData={moviesData} title={"All Movies"}     url={` https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`}/>
-
+      <AllMovies
+        moviesData={moviesData}
+        title={"All Movies"}
+        url={` https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`}
+      />
     </div>
   );
 }

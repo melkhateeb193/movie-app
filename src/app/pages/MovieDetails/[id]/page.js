@@ -17,12 +17,11 @@ export default function MovieDetails({ params }) {
   const [id, setId] = useState(null);
   const [movieDetails, setMovieDetails] = useState(null);
 
-  // Wait for params to be resolved
   useEffect(() => {
     if (params?.id) {
       setId(params.id);
     }
-  }, [params]); // Dependency on params, so it runs when params change
+  }, [params]); 
 
   useEffect(() => {
     if (!id) return;
@@ -41,7 +40,7 @@ export default function MovieDetails({ params }) {
     };
 
     fetchMovieDetails();
-  }, [id]); // Fetch details when id changes
+  }, [id]); 
 
   if (!movieDetails) {
     return <p>Loading...</p>;
@@ -71,8 +70,12 @@ export default function MovieDetails({ params }) {
           Movie Name: {movieDetails.title}
         </h1>
         <p className="text-white mt-2">Description: {movieDetails.overview}</p>
-        <p className="text-white mt-2">Release Date: {movieDetails.release_date}</p>
-        <p className="text-white mt-2">Vote Average: {movieDetails.vote_average}</p>
+        <p className="text-white mt-2">
+          Release Date: {movieDetails.release_date}
+        </p>
+        <p className="text-white mt-2">
+          Vote Average: {movieDetails.vote_average}
+        </p>
         <p className="text-white mt-2">
           Genres: {movieDetails.genres.map((genre) => genre.name).join(", ")}
         </p>

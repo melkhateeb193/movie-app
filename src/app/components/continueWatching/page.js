@@ -5,19 +5,19 @@ import { useState, useEffect } from "react";
 
 export default function ContinueWatch({ moviesData }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-useEffect(() => {
-  if (moviesData.length > 0) {  
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % moviesData.length);
-    }, 2000);
 
-    return () => clearInterval(interval);
+  useEffect(() => {
+    if (moviesData.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % moviesData.length);
+      }, 2000);
+
+      return () => clearInterval(interval);
+    }
+  }, [moviesData]);
+  if (!moviesData || moviesData.length === 0) {
+    return <p>Loading movies...</p>;
   }
-}, [moviesData]);
- if (!moviesData || moviesData.length === 0) {
-  return <p>Loading movies...</p>;
-}
   return (
     <div className="movie-container relative">
       <ul className="flex gap-3 transition-transform duration-500">
@@ -32,7 +32,7 @@ useEffect(() => {
                 transform: `translateX(-${currentIndex * 50}%)`,
               }}
             >
-              <Link href={`pages/MovieDetails/${movie.id}`}>    
+              <Link href={`pages/MovieDetails/${movie.id}`}>
                 <Image
                   className="rounded-[1rem] w-full h-auto mx-auto"
                   src={movie.image}

@@ -6,10 +6,10 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 
-export default function AllMovies({url , title}) {
-  const [page, setPage] = useState(1); 
+export default function AllMovies({ url, title }) {
+  const [page, setPage] = useState(1);
   const [moviesData, setMoviesData] = useState([]);
-  const [totalPages, setTotalPages] = useState(1); 
+  const [totalPages, setTotalPages] = useState(1);
 
   const handlePrevPage = () => {
     if (page > 1) setPage(page - 1);
@@ -21,12 +21,9 @@ export default function AllMovies({url , title}) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(url)
+      console.log(url);
       try {
-        const response = await fetch(
-          `${url}&page=${page}`,
-          options
-        );
+        const response = await fetch(`${url}&page=${page}`, options);
 
         if (!response.ok) {
           throw new Error(`HTTP ERROR: ${response.status}`);
@@ -37,23 +34,25 @@ export default function AllMovies({url , title}) {
           id: movie.id,
           title: movie.title,
           name: movie.name,
-          year: movie.release_date ? movie.release_date.split("-")[0] : "Unknown",
+          year: movie.release_date
+            ? movie.release_date.split("-")[0]
+            : "Unknown",
           image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          released: movie.release_date, 
+          released: movie.release_date,
           vote: movie.vote_average,
-          overview: movie.overview, 
+          overview: movie.overview,
           date: movie.first_air_date,
         }));
 
         setMoviesData(transformedData);
-        setTotalPages(result.total_pages); 
-        console.log(result.total_pages)
+        setTotalPages(result.total_pages);
+        console.log(result.total_pages);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
     };
     fetchData();
-  }, [page]); 
+  }, [page]);
 
   const options = {
     method: "GET",
@@ -63,7 +62,7 @@ export default function AllMovies({url , title}) {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Zjg1M2Q0NjRhYzk1NGZmMzc2NTI1MzcwMTIwZjNiZCIsIm5iZiI6MTY4NTAwNTcyNS40ODYsInN1YiI6IjY0NmYyNTlkNzFmZmRmMDBjNDUxYWZlZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BR1bxweUOwReNNcWHwXkbtCXq2WMeC0qGYbd2isC2Bk", // Replace with your actual API key
     },
   };
-console.log(moviesData)
+  console.log(moviesData);
   return (
     <div>
       <div>
@@ -75,17 +74,17 @@ console.log(moviesData)
                 <Image
                   className="rounded-[1rem] w-full h-auto sm:w-[12rem] sm:h-[18rem] lg:w-[14.06rem] lg:h-[20.25rem]"
                   src={movie.image}
-                  alt={ movie.name ||movie.title }
+                  alt={movie.name || movie.title}
                   width={500}
                   height={750}
                 />
                 <div className="absolute bottom-2 left-2 right-2 bg-transparent flex items-center justify-between px-2 sm:px-3 lg:px-4 w-full">
                   <div className="flex flex-col">
                     <p className="text-gray-50 text-xs sm:text-sm md:text-base font-semibold bg-transparent">
-                     {movie.title || movie.name}
+                      {movie.title || movie.name}
                     </p>
                     <p className="text-gray-400 text-xs sm:text-sm md:text-base bg-transparent">
-                    {movie.date || movie.year} 
+                      {movie.date || movie.year}
                     </p>
                   </div>
                   <FavoriteIcon className="text-gray-50 text-base sm:text-lg md:text-xl" />
@@ -105,7 +104,7 @@ console.log(moviesData)
           <ArrowBackIosNewIcon fontSize="small" />
         </button>
         <p className="text-lg font-medium text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-900 rounded-md px-4 py-2">
-          {page} {/* Show current page number */}
+          {page} 
         </p>
         <button
           onClick={handleNextPage}

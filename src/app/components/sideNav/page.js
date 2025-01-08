@@ -7,7 +7,7 @@ import LiveTvIcon from "@mui/icons-material/LiveTv";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 
 const links = [
   {
@@ -49,7 +49,7 @@ const links = [
 
 export default function SideNav({ setType, addfav }) {
   const [isClient, setIsClient] = useState(false);
-  const pathname = usePathname(); 
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsClient(true);
@@ -70,10 +70,7 @@ export default function SideNav({ setType, addfav }) {
       {links.map((link, index) => {
         const isMyFav = link.name === "myFav";
         const favNumber = isMyFav ? `(${addfav.length})` : link.number || "";
-
-        // Check if the current link is active
         const isActive = pathname === link.path;
-
         return (
           <li
             onClick={() => handleTypeChange(link.type)}
