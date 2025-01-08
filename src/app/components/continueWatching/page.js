@@ -13,7 +13,10 @@ export default function ContinueWatch({ moviesData }) {
 
     return () => clearInterval(interval);
   }, [moviesData.length]);
-
+ // Check if moviesData has items
+ if (!moviesData || moviesData.length === 0) {
+  return <p>Loading movies...</p>;
+}
   return (
     <div className="movie-container relative">
       <ul className="flex gap-3 transition-transform duration-500">

@@ -49,10 +49,9 @@ const links = [
 
 export default function SideNav({ setType, addfav }) {
   const [isClient, setIsClient] = useState(false);
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname(); 
 
   useEffect(() => {
-    // Set isClient to true once the component is mounted on the client
     setIsClient(true);
   }, []);
 
@@ -62,7 +61,6 @@ export default function SideNav({ setType, addfav }) {
     }
   };
 
-  // Early return if not on the client yet to prevent mismatch
   if (!isClient) {
     return null;
   }

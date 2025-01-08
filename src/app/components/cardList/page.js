@@ -4,7 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CardsList({moviesData}) {
- 
+  
+  if (!moviesData || moviesData.length === 0) {
+    return <p>Loading movies...</p>; 
+  }
   return (
     <div className="mt-5">
       <p className="text-white font-bold text-lg sm:text-xl">Top rated</p>
