@@ -48,12 +48,8 @@ const links = [
 ];
 
 export default function SideNav({ setType, addfav }) {
-  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname(); 
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const handleTypeChange = (newType) => {
     if (newType) {
@@ -61,9 +57,6 @@ export default function SideNav({ setType, addfav }) {
     }
   };
 
-  if (!isClient) {
-    return null;
-  }
 
   return (
     <ul className="flex flex-row sm:flex-col gap-5 w-100 rounded p-3">

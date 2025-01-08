@@ -58,7 +58,7 @@ export default function MovieDetails({ params }) {
   };
 
   return (
-    <div className="container mx-auto flex justify-center items-center mt-3 border-4 rounded-3xl p-3 bg-gradient-to-r from-blue-500 to-purple-500">
+    <div className="container mx-auto flex justify-center items-center mt-3 border-4 rounded-3xl p-3 bg-gradient-to-r from-blue-500 to-purple-500 mb-6">
       <Image
         className="w-1/4 h-auto rounded-lg"
         src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
@@ -76,7 +76,7 @@ export default function MovieDetails({ params }) {
         <p className="text-white mt-2">
           Genres: {movieDetails.genres.map((genre) => genre.name).join(", ")}
         </p>
-        <div className="flex gap-6">
+        <div className="flex gap-6 flex-col sm:flex-row">
           <button className="mt-4 px-4 py-2 bg-sky-900 text-white rounded-full hover:bg-sky-300 transition">
             Watch Now
           </button>

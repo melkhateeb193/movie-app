@@ -7,8 +7,12 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import MovieContext from "./movieContext";
 
-
-
+import { Poppins } from 'next/font/google'; 
+const poppins = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], 
+  subsets: ['latin'], 
+  display: 'swap', 
+});
 export default function RootLayout({ children }) {
   const [type ,setType]= useState('movie/popular?language=en-US&page=1')
   const [moviesData, setMoviesData] = useState([]);
@@ -55,9 +59,11 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Zjg1M2Q0NjRhYzk1NGZmMzc2NTI1MzcwMTIwZjNiZCIsIm5iZiI6MTY4NTAwNTcyNS40ODYsInN1YiI6IjY0NmYyNTlkNzFmZmRmMDBjNDUxYWZlZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BR1bxweUOwReNNcWHwXkbtCXq2WMeC0qGYbd2isC2Bk", // Replace with your actual API key
   },
 }; 
+
+
   return (
     <html lang="en">
-      <body>
+      <body className={poppins}>
       <Head>
           <title>Movie-App</title>
           <meta name="description" content="Stream the best movies here" />
