@@ -6,7 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 
-export default function AllMovies({ url, title }) {
+export default function AllMovies({ url, title ,path}) {
   const [page, setPage] = useState(1);
   const [moviesData, setMoviesData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -21,7 +21,6 @@ export default function AllMovies({ url, title }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(url);
       try {
         const response = await fetch(`${url}&page=${page}`, options);
 
@@ -46,14 +45,12 @@ export default function AllMovies({ url, title }) {
 
         setMoviesData(transformedData);
         setTotalPages(result.total_pages);
-        console.log(result.total_pages);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
     };
     fetchData();
   }, [page]);
-
   const options = {
     method: "GET",
     headers: {
@@ -62,7 +59,6 @@ export default function AllMovies({ url, title }) {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Zjg1M2Q0NjRhYzk1NGZmMzc2NTI1MzcwMTIwZjNiZCIsIm5iZiI6MTY4NTAwNTcyNS40ODYsInN1YiI6IjY0NmYyNTlkNzFmZmRmMDBjNDUxYWZlZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BR1bxweUOwReNNcWHwXkbtCXq2WMeC0qGYbd2isC2Bk", // Replace with your actual API key
     },
   };
-  console.log(moviesData);
   return (
     <div>
       <div>
@@ -70,7 +66,7 @@ export default function AllMovies({ url, title }) {
         <ul className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-[1.5rem] sm:gap-6 px-4 overflow-hidden transition-transform duration-300 ease-in-out">
           {moviesData.map((movie) => (
             <li key={movie.id} className="relative cursor-pointer w-full">
-              <Link href={`MovieDetails/${movie.id}`}>
+              <Link href={`${path}/${movie.id}`}>
                 <Image
                   className="rounded-[1rem] w-full h-auto sm:w-[12rem] sm:h-[18rem] lg:w-[14.06rem] lg:h-[20.25rem]"
                   src={movie.image}

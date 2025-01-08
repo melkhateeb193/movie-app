@@ -24,11 +24,12 @@ export default function TvShow() {
       prev < Math.ceil(moviesData.length / itemsPerPage) - 1 ? prev + 1 : 0
     );
   };
-
   const visibleMovies = moviesData.slice(
     currentIndex * itemsPerPage,
     currentIndex * itemsPerPage + itemsPerPage
   );
+  console.log(visibleMovies)
+
   return (
     <div className="h-full">
       <div className="relative h-fit mb-6 bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg shadow-lg p-6">
@@ -60,19 +61,19 @@ export default function TvShow() {
                 key={movie.id}
                 className="relative flex-shrink-0 w-[45%] sm:w-[30%] md:w-[25%] lg:w-[20%]"
               >
-                <Link href={`MovieDetails/${movie.id}`}>
+                <Link href={`tvShowDetails/${movie.id}`}>
                   <div className="relative">
                     <Image
                       className="rounded-md w-full h-auto transition-transform duration-300 hover:scale-105"
                       src={movie.image}
-                      alt={movie.name || movie.original_name}
+                      alt={movie.name}
                       width={400}
                       height={600}
                     />
                     <div className="absolute bottom-2 left-2 right-2 bg-black bg-opacity-50 rounded-md p-2">
                       <div>
                         <p className="text-gray-50 text-sm sm:text-base font-semibold truncate">
-                          {movie.name || movie.original_name}
+                          {movie.name}
                         </p>
                         <p className="text-gray-400 text-xs sm:text-sm md:text-base">
                           {movie.release_date || movie.date}
@@ -87,8 +88,8 @@ export default function TvShow() {
           </ul>
         </div>
       </div>
-
       <AllMovies
+      path={"tvShowDetails"}
         moviesData={moviesData}
         title={"All tvSerious"}
         url={`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc`}
@@ -96,3 +97,4 @@ export default function TvShow() {
     </div>
   );
 }
+

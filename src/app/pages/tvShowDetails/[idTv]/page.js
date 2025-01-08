@@ -55,29 +55,26 @@ export default function TvDetails({ params }) {
       return prev;
     });
   };
-
+console.log(movieDetails)
   return (
     <div className="container mx-auto flex justify-center items-center mt-3 border-4 rounded-3xl p-3 bg-gradient-to-r from-blue-500 to-purple-500 mb-6">
       <Image
         className="w-1/4 h-auto rounded-lg"
         src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
-        alt={movieDetails.title || movieDetails.name}
+        alt={`Poster of the TV show ${movieDetails.name}`}
         width={550}
         height={400}
       />
       <div className="ml-3">
         <h1 className="text-white text-xl font-semibold">
-          Movie Name: {movieDetails.title || movieDetails.name}
+          serious Name: {movieDetails.name}
         </h1>
         <p className="text-white mt-2">Description: {movieDetails.overview}</p>
         <p className="text-white mt-2">
-          Release Date: {movieDetails.release_date}
+          Release Date: {movieDetails.first_air_date}
         </p>
         <p className="text-white mt-2">
           Vote Average: {movieDetails.vote_average}
-        </p>
-        <p className="text-white mt-2">
-          Genres: {movieDetails.genres.map((genre) => genre.name).join(", ")}
         </p>
         <div className="flex gap-6 flex-col sm:flex-row">
           <button className="mt-4 px-4 py-2 bg-sky-900 text-white rounded-full hover:bg-sky-300 transition">
