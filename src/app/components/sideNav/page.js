@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import LayersIcon from "@mui/icons-material/Layers";
 import LanguageIcon from "@mui/icons-material/Language";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -5,7 +7,7 @@ import LiveTvIcon from "@mui/icons-material/LiveTv";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Importing usePathname for path matching
+import { usePathname } from "next/navigation"; 
 
 const links = [
   {
@@ -46,8 +48,12 @@ const links = [
 ];
 
 export default function SideNav({ setType, addfav }) {
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname(); 
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleTypeChange = (newType) => {
     if (newType) {
@@ -55,6 +61,9 @@ export default function SideNav({ setType, addfav }) {
     }
   };
 
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <ul className="flex flex-row sm:flex-col gap-5 w-100 rounded p-3">
@@ -62,6 +71,7 @@ export default function SideNav({ setType, addfav }) {
         const isMyFav = link.name === "myFav";
         const favNumber = isMyFav ? `(${addfav.length})` : link.number || "";
 
+        // Check if the current link is active
         const isActive = pathname === link.path;
 
         return (
