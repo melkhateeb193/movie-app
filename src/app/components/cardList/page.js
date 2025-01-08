@@ -13,7 +13,7 @@ export default function CardsList({moviesData}) {
       <p className="text-white font-bold text-lg sm:text-xl">Top rated</p>
       <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[1.5rem]">
         {moviesData
-          .filter((movie) => movie.vote > 7.3)
+          .filter((movie) => movie.vote > 7)
           .map((movie) => {
             return (
               <li key={movie.id} className="relative cursor-pointer">
@@ -28,7 +28,7 @@ export default function CardsList({moviesData}) {
                 />
                 <div className="absolute bottom-2 left-2 right-2 bg-transparent flex items-center justify-between px-2 sm:px-3 lg:px-4 w-full">
                   <div className="flex flex-col">
-                    <p className="text-gray-50 text-xs sm:text-sm md:text-base font-semibold bg-transparent">
+                    <p className="text-gray-100 text-xs sm:text-sm md:text-base font-semibold bg-transparent">
                       {movie.title}
                     </p>
                     <p className="text-gray-400 text-xs sm:text-sm md:text-base bg-transparent">

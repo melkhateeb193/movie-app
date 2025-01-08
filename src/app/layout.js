@@ -69,6 +69,7 @@ const options = {
           <meta name="description" content="Stream the best movies here" />
         </Head>
         <MovieContext.Provider  value={{type ,moviesData ,setAddFav ,addfav}}>
+          
       <main className="flex sm:flex-row flex-col h-screen bg-double-images bg-no-repeat bg-top-left-bottom-right bg-contain-and-contain p-4">
       {/* Sidebar */}
       <aside className="sideNav flex-initial w-full sm:w-[30%] md:w-[20%] flex items-center justify-center flex-col gap-7 sm:mr-2  sm:border-r-2 border-gray-600">

@@ -1,5 +1,3 @@
-"use client";
-import { useEffect, useState } from "react";
 import LayersIcon from "@mui/icons-material/Layers";
 import LanguageIcon from "@mui/icons-material/Language";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -64,7 +62,6 @@ export default function SideNav({ setType, addfav }) {
         const isMyFav = link.name === "myFav";
         const favNumber = isMyFav ? `(${addfav.length})` : link.number || "";
 
-        // Check if the current link is active
         const isActive = pathname === link.path;
 
         return (

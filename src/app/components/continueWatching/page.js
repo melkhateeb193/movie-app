@@ -5,15 +5,16 @@ import { useState, useEffect } from "react";
 
 export default function ContinueWatch({ moviesData }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
+  
+useEffect(() => {
+  if (moviesData.length > 0) {  
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % moviesData.length);
-    }, 6000);
+    }, 2000);
 
     return () => clearInterval(interval);
-  }, [moviesData.length]);
- // Check if moviesData has items
+  }
+}, [moviesData]);
  if (!moviesData || moviesData.length === 0) {
   return <p>Loading movies...</p>;
 }

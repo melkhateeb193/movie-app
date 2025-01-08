@@ -4,6 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Link from "next/link";
 import Image from "next/image";
 import MovieContext from "@/app/movieContext";
+import AllMovies from "../allMovies/page";
 
 export default function TvShow() {
   const { moviesData } = useContext(MovieContext);
@@ -29,54 +30,67 @@ export default function TvShow() {
     currentIndex * itemsPerPage + itemsPerPage
   );
   return (
-    <div className="relative h-screen">
-      <p className="text-white font-bold mb-4">tv Shows</p>
-      <div className="relative overflow-hidden">
-        <button
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-2 rounded-full shadow-lg"
-          onClick={handlePrev}
-        >
-          &#8592;
-        </button>
-        <button
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-2 rounded-full shadow-lg"
-          onClick={handleNext}
-        >
-          &#8594;
-        </button>
-        {/* Movies List */}
-        <ul className="mt-5 flex gap-[1.5rem] justify-center transition-transform duration-300 ease-in-out sm:flex-nowrap sm:gap-6 sm:px-4 overflow-hidden">
-          {visibleMovies.map((movie, index) => (
-            <li
-              key={movie.id}
-              className={`relative cursor-pointer w-full sm:w-auto ${
-                index === 0 ? "block" : "hidden sm:block"
-              }`}
-            >
-              <Link href={`tvShowDetails/${movie.id}`}>
-                <Image
-                  className="rounded-[1rem] w-full sm:w-[14.06rem] sm:h-[20.25rem]"
-                  src={movie.image}
-                  alt={movie.title || movie.name}
-                  width={500}
-                  height={750}
-                />
-                <div className="absolute bottom-2 left-2 right-2 bg-transparent flex items-center justify-between px-2 sm:px-3 lg:px-4 w-full">
-                  <div className="flex flex-col">
-                    <p className="text-gray-50 text-xs sm:text-sm md:text-base font-semibold bg-transparent">
-                      {movie.name}
-                    </p>
-                    <p className="text-gray-400 text-xs sm:text-sm md:text-base bg-transparent">
-                      {movie.date}
-                    </p>
-                  </div>
-                  <FavoriteIcon className="text-gray-50 text-base sm:text-lg md:text-xl" />
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="h-full">
+<div className="relative h-fit mb-6 bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg shadow-lg p-6">
+  <p className="text-white font-bold text-2xl mb-4 text-center">Tv Serious</p>
+
+  <div className="relative">
+    {/* Left Navigation Button */}
+    <button
+      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
+      onClick={handlePrev}
+    >
+      &#8592;
+    </button>
+
+    {/* Right Navigation Button */}
+    <button
+      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition duration-300"
+      onClick={handleNext}
+    >
+      &#8594;
+    </button>
+
+    {/* Tv List */}
+    <ul className="flex gap-4 overflow-hidden mt-5">
+  {visibleMovies.map((movie) => (
+    <li 
+      key={movie.id} 
+      className="relative flex-shrink-0 w-[45%] sm:w-[30%] md:w-[25%] lg:w-[20%]"
+    >
+      <Link href={`MovieDetails/${movie.id}`}>
+        <div className="relative">
+          <Image
+            className="rounded-md w-full h-auto transition-transform duration-300 hover:scale-105"
+            src={movie.image}
+            alt={movie.name || movie.original_name}
+            width={400}
+            height={600}
+          />
+          <div className="absolute bottom-2 left-2 right-2 bg-black bg-opacity-50 rounded-md p-2">
+            <div>
+              <p className="text-gray-50 text-sm sm:text-base font-semibold truncate">
+              {movie.name || movie.original_name}
+              </p>
+              <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                {movie.release_date || movie.date}
+              </p>
+            </div>
+            <FavoriteIcon className="text-gray-50 text-sm sm:text-base md:text-lg" />
+          </div>
+        </div>
+      </Link>
+    </li>
+  ))}
+</ul>
+
+  </div>
+</div>
+
+
+
+<AllMovies moviesData={moviesData}  title={"All tvSerious"}   url={`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc`}/>
+
     </div>
   );
 }
