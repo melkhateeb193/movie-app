@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Movie App 🎬
+A modern, responsive web application that allows users to search, browse, and view detailed information about movies. Built with Next.js and styled with MUI, this app demonstrates advanced frontend development practices, including skeleton loading and user-friendly design.
 
-## Getting Started
+Features ✨
+Movie Search: Search for movies by title using the OMDb API.
+Movie Details Page: View detailed information about a movie, including the title, release year, plot, and more.
+Skeleton Loading: Enhance user experience by displaying skeleton loaders while data is being fetched.
+Responsive Design: Fully responsive layout using Material-UI.
+Pagination: Navigate through large sets of movies effectively using pagination.
 
-First, run the development server:
+Technologies Used 🛠️
+Framework:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js
+Frontend:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Material-UI (MUI) for styling
+API:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+OMDb API for movie data
+Utilities:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+React Skeleton for loading states
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+How It Works 🔧
+Search: Enter a movie title in the search bar to fetch results from the OMDb API.
+View Details: Click on a movie card to navigate to a detailed page with comprehensive movie information.
+Skeleton Loading: While data is being fetched, skeleton loaders are displayed to improve user experience.
+Pagination: Navigate through multiple pages of movies using pagination controls.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contact 📬
+If you have any questions or feedback, feel free to reach out:
 
-## Deploy on Vercel
+Name: Your Name
+Name: Your Name Email: mostafamagdy5500@gmail.com GitHub: Your GitHub Profile
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
