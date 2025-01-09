@@ -33,6 +33,6 @@ Pagination: Navigate through multiple pages of movies using pagination controls.
 Contact 📬
 If you have any questions or feedback, feel free to reach out:
 
-Name: Your Name
-Name: Your Name Email: mostafamagdy5500@gmail.com GitHub: Your GitHub Profile
-
+Name: Mostafa
+Email: mostafamagdy5500@gmail.com 
+GitHub: (https://github.com/melkhateeb193)
